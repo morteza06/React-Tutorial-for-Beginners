@@ -2,20 +2,20 @@ import React, { Component } from 'react'
 
 class Counter extends Component{
     state = {
-        count :0
+        count :0, 
+        tags : ["tag1","tag2", "tag3"]
     };
 
     render() {
-        let classes = this.getBadgeClasses();//Refactor 
-  
         return(
             <div>
-                <span class={classes}>{this.formatcount()}</span>
+                <span class={this.getBadgeClasses()}>{this.formatcount()}</span>
                 <button class="btn btn-primary btn-sm">Increment</button>
+                <ul> {this.state.tags.map(tag => <li key={tag}> {tag} </li>)} </ul>
             </div>
         );
     }
-    getBadgeClasses() {
+    getBadgeClasses() {  //create with refactor
         let classes = "badge m-2 bg-";
         classes += this.state.count === 0 ? "warning" : "primary";
         return classes;
