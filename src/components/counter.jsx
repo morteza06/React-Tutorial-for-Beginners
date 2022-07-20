@@ -2,25 +2,22 @@ import React, { Component } from 'react'
 
 class Counter extends Component{
     state = {
-        count: 0
+        values: this.props.value
     };
 
-
-    handleIncrement = product => {   //bind Eventhandler with[ =() =>   ] cleaner and simpler
-        console.log(product);
-        this.setState({ count: this.state.count + 1 });
-    };
-
-    doHandlerIncrement =() =>{
-        this.handleIncrement({ id: 1});
+    handleIncrement =() => {  
+        this.setState({ values: this.state.values + 1 });
     };
 
     render() {
+         console.log('props', this.props.value);
         return (
             <div>
-                <span className={this.getBadgeClasses()}>{this.formatcount()}</span>
+                <span className={this.getBadgeClasses()}>
+                    {this.formatcount()}
+                </span>
                 <button 
-                    onClick={this.doHandlerIncrement} //inline function have a error => onClick={() => {this.handleIncrement(product) } 
+                    onClick={this.handleIncrement} 
                     className="btn btn-primary btn-sm">Increment
                 </button>
             </div>
@@ -28,13 +25,13 @@ class Counter extends Component{
     }
     getBadgeClasses() {  //create with refactor
         let classes = "badge m-2 bg-";
-        classes += this.state.count === 0 ? "warning" : "primary";
+        classes += this.state.values === 0 ? "warning" : "primary";
         return classes;
     }
 
     formatcount(){
-        const { count } = this.state;
-        return count === 0  ? "Zero" : count;
+        const values = this.state.values;
+        return values === 0  ? "Zero" : values;
     }
 }
 
