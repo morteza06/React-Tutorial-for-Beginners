@@ -6,15 +6,21 @@ class Counter extends Component{
     };
 
 
-    handleIncrement = () => {//bind Eventhandler with[ =() =>   ] cleaner and simpler
-        this.setState({ count: this.state.count + 1})
-    }
+    handleIncrement = product => {   //bind Eventhandler with[ =() =>   ] cleaner and simpler
+        console.log(product);
+        this.setState({ count: this.state.count + 1 });
+    };
+
+    doHandlerIncrement =() =>{
+        this.handleIncrement({ id: 1});
+    };
 
     render() {
-        return(
+        return (
             <div>
                 <span className={this.getBadgeClasses()}>{this.formatcount()}</span>
-                <button onClick={this.handleIncrement} 
+                <button 
+                    onClick={this.doHandlerIncrement} //inline function have a error => onClick={() => {this.handleIncrement(product) } 
                     className="btn btn-primary btn-sm">Increment
                 </button>
             </div>
