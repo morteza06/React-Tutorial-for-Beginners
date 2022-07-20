@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 class Counter extends Component{
     state = {
-        values: this.props.value//local
+        values: this.props.counter.value//local
     };
 
     handleIncrement =() => {  
@@ -19,11 +19,13 @@ class Counter extends Component{
                     onClick={this.handleIncrement} 
                     className="btn btn-primary btn-sm">Increment
                 </button>
-                <button onClick={this.props.onDelete} className='btn btn-danger btn-sm m-2'>Delete</button>
+                <button 
+                   onClick={() => this.props.onDelete(this.props.counter.id)}
+                   className='btn btn-danger btn-sm m-2'>Delete</button>
             </div>
         );
     }
-    getBadgeClasses() {  //create with refactor
+    getBadgeClasses() {  
         let classes = "badge m-2 bg-";
         classes += this.state.values === 0 ? "warning" : "primary";
         return classes;
