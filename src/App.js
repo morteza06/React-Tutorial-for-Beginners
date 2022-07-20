@@ -13,6 +13,16 @@ class App extends Component {
         ]
     };
 
+    constructor(){
+      super(); // use parent class
+      console.log('App- Constructor');
+    }
+
+    componentDidMount(){
+      //Ajax call --get data from server
+      console.log('App - Mounted');// that component is in the DOM
+    }
+
     handleIncrement = counter =>{
         const counters = [...this.state.counters];//clone
         const index = counters.indexOf(counter);
@@ -37,6 +47,8 @@ class App extends Component {
 
 
   render() { 
+    console.log('App - Rendered')
+
     return (
       <React.Fragment>
         <NavBar  totalCounters={this.state.counters.filter(c => c.value > 0).length}

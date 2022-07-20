@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
 // stateless Functional Component
-const NavBar = ({  totalCounters }) => { // in arugument can equal with props
+const NavBar = props => { 
+    
+    console.log('NavBar - Rendered');
     return( 
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container">
@@ -16,7 +18,7 @@ const NavBar = ({  totalCounters }) => { // in arugument can equal with props
                     <li className="nav-item">
                     <a className="nav-link active" aria-current="page" href="#">Home 
                         <span className="badge rounded-pill bg-info text-dark">
-                            {totalCounters}
+                            {props.totalCounters}
                         </span>
                     </a>
                     </li>
