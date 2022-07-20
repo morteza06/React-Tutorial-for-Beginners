@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 class Counter extends Component{
     state = {
-        values: this.props.counter.value//local
+        values: this.props.counter.value//localstate    -  execute only one and instance counter comp
     };
 
     handleIncrement =() => {  
